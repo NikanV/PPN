@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="black">#FF000000</color>
-    <color name="gray">#302F2F</color>
-
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="backgroundColor">#2A2E3B</color> <!-- Dark blue color from the logo -->
-    <color name="textColor">#FFFFFF</color> <!-- White text color for better contrast -->
-    <color name="spinnerBackgroundColor">#3B3F51</color> <!-- Adjusted to match the logo -->
+    <color name="backgroundColor">#2A2E3B</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="spinnerBackgroundColor">#3B3F51</color>
     <color name="white">#FFFFFF</color>
-
-
+<!--    Navigation Bar-->
     <color name="navBarColor">#2A2E3B</color>
     <color name="navBarItemColor">#FFFFFF</color>
     <color name="navBarItemSelectedColor">#03DAC5</color>
-
-
 </resources>

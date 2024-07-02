@@ -13,7 +13,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,15 +24,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 
 import com.dev7.lib.v2ray.V2rayController;
-import com.dev7.lib.v2ray.utils.V2rayConfigs;
 import com.dev7.lib.v2ray.utils.V2rayConstants;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -59,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             server_delay = findViewById(R.id.server_delay);
             server_spinner = findViewById(R.id.server_spinner);
 
-            // Initialize the server configuration map
             serverConfigMap = new HashMap<>();
             serverConfigMap.put("Tehran", "tehran_config_string");
             serverConfigMap.put("Mashhad", "mashhad_config_string");
@@ -89,11 +84,9 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> server_delay.setText("Ping: " + V2rayController.getV2rayServerDelay(getDefaultConfig()) + "ms"), 200);
         });
 
-        // Check connection state when activity launch
         switch (V2rayController.getConnectionState()) {
             case CONNECTED:
                 connection.setText("Disconnect");
-                // check connection latency
                 server_delay.callOnClick();
                 break;
             case DISCONNECTED:
@@ -137,19 +130,18 @@ public class MainActivity extends AppCompatActivity {
             registerReceiver(v2rayBroadCastReceiver, new IntentFilter(V2RAY_SERVICE_STATICS_BROADCAST_INTENT));
         }
 
-        // Setup Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED);
 
         Map<Integer, Runnable> navigationActions = new HashMap<>();
         navigationActions.put(R.id.navigation_home, () -> {
-            // Handle Home action
+            // TODO Handle Home action
         });
         navigationActions.put(R.id.navigation_settings, () -> {
-            // Handle Settings action
+            // TODO Handle Settings action
         });
         navigationActions.put(R.id.navigation_import, () -> {
-            // Handle Import Config action
+            // TODO Handle Import Config action
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -163,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static String getDefaultConfig() {
-        return ""; // Return the default V2ray configuration here
+        return "";
     }
 
     @Override
