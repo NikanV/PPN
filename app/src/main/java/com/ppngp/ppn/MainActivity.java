@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -39,50 +40,23 @@ public class MainActivity extends AppCompatActivity {
     private TextView connection_speed, connection_traffic, connection_time, server_delay;
     private Spinner server_spinner;
     private BroadcastReceiver v2rayBroadCastReceiver;
-    private Map<String, String> serverConfigMap;
+    private HashMap<String, String> serverConfigMap;
 
     @SuppressLint({"SetTextI18n", "UnspecifiedRegisterReceiverFlag"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            V2rayController.init(this, R.mipmap.ic_launcher, "V2ray Android");
-            connection = findViewById(R.id.btn_connection);
-            connection_speed = findViewById(R.id.connection_speed);
-            connection_time = findViewById(R.id.connection_duration);
-            connection_traffic = findViewById(R.id.connection_traffic);
-            server_delay = findViewById(R.id.server_delay);
-            server_spinner = findViewById(R.id.server_spinner);
 
-            serverConfigMap = new HashMap<>();
-            serverConfigMap.put("Tehran", "tehran_config_string");
-            serverConfigMap.put("Mashhad", "mashhad_config_string");
-            serverConfigMap.put("Shiraz", "shiraz_config_string");
-            serverConfigMap.put("Isfahan", "isfahan_config_string");
-            serverConfigMap.put("Karaj", "karaj_config_string");
-            serverConfigMap.put("Arak", "arak_config_string");
+        if (savedInstanceState == null) {
+            V2rayController.init(this, R.mipmap.ic_launcher, "PPN");
         }
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.servers_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        server_spinner.setAdapter(adapter);
+        serverConfigMap = Utils.readJsonFromAssets(this, "v2ray_configs.json");
 
-        connection.setOnClickListener(view -> {
-            String selectedServer = server_spinner.getSelectedItem().toString();
-            String configString = serverConfigMap.get(selectedServer);
-            if (V2rayController.getConnectionState() == V2rayConstants.CONNECTION_STATES.DISCONNECTED) {
-                V2rayController.startV2ray(this, selectedServer, configString, null);
-            } else {
-                V2rayController.stopV2ray(this);
-            }
-        });
-
-        server_delay.setOnClickListener(view -> {
-            server_delay.setText("Ping: measuring...");
-            new Handler().postDelayed(() -> server_delay.setText("Ping: " + V2rayController.getV2rayServerDelay(getDefaultConfig()) + "ms"), 200);
-        });
+        setElements();
+        setAdapterAndListeners();
+        setNavBar();
 
         switch (V2rayController.getConnectionState()) {
             case CONNECTED:
@@ -129,7 +103,47 @@ public class MainActivity extends AppCompatActivity {
         } else {
             registerReceiver(v2rayBroadCastReceiver, new IntentFilter(V2RAY_SERVICE_STATICS_BROADCAST_INTENT));
         }
+    }
 
+    private void setElements() {
+        connection = findViewById(R.id.btn_connection);
+        connection_speed = findViewById(R.id.connection_speed);
+        connection_time = findViewById(R.id.connection_duration);
+        connection_traffic = findViewById(R.id.connection_traffic);
+        server_delay = findViewById(R.id.server_delay);
+        server_spinner = findViewById(R.id.server_spinner);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setAdapterAndListeners() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.servers_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        server_spinner.setAdapter(adapter);
+
+        connection.setOnClickListener(view -> {
+            ArrayList<String> serverAndRemark = getSelectedServerAndRemark();
+            if (V2rayController.getConnectionState() == V2rayConstants.CONNECTION_STATES.DISCONNECTED) {
+                V2rayController.startV2ray(this, serverAndRemark.get(0), serverAndRemark.get(1), null);
+            } else {
+                V2rayController.stopV2ray(this);
+            }
+        });
+
+        server_delay.setOnClickListener(view -> {
+            server_delay.setText("Ping: measuring...");
+            new Handler().postDelayed(() -> server_delay.setText("Ping: " + V2rayController.getV2rayServerDelay(getSelectedServerAndRemark().get(1)) + "ms"), 200);
+        });
+    }
+
+    private ArrayList<String> getSelectedServerAndRemark() {
+        ArrayList<String> result = new ArrayList<>();
+        String selectedServer = server_spinner.getSelectedItem().toString();
+        result.add(selectedServer);
+        result.add(serverConfigMap.get(selectedServer));
+        return result;
+    }
+
+    private void setNavBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED);
 
@@ -152,10 +166,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
-    }
-
-    public static String getDefaultConfig() {
-        return "";
     }
 
     @Override
