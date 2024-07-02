@@ -37,17 +37,19 @@ public class LoginPage extends AppCompatActivity {
                 String password = Objects.requireNonNull(pwdEt.getText()).toString();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    makeToast("Empty username or password!", Toast.LENGTH_SHORT);
+                    Toast.makeText(LoginPage.this, "Empty username or password!", Toast.LENGTH_SHORT).show();
                 } else {
+                    loginBtn.setClickable(false);
                     ParseUser.logInInBackground(username, password, (user, e) -> {
                         if (user != null) {
-                            makeToast("Logged in successfully.", Toast.LENGTH_SHORT);
+                            Toast.makeText(LoginPage.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             usernameEt.setText("");
                             pwdEt.setText("");
-                            // TODO transfer to the main page
+                            tr(MainActivity.class);
                         } else {
-                            makeToast(e.getMessage(), Toast.LENGTH_SHORT);
+                            Toast.makeText(LoginPage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
+                        loginBtn.setClickable(true);
                     });
                 }
             }
@@ -69,10 +71,6 @@ public class LoginPage extends AppCompatActivity {
         rememberCb = findViewById(R.id.rem_cb);
         registerLink = findViewById(R.id.register_link);
         loginBtn = findViewById(R.id.login_btn);
-    }
-
-    private void makeToast(String toast_str, int length) {
-        Toast.makeText(LoginPage.this, toast_str, length).show();
     }
 
     private void tr(Class c) {

@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -64,10 +65,6 @@ public class RegisterPage extends AppCompatActivity {
         loginLink = findViewById(R.id.login_link);
     }
 
-    private void makeToast(String toast_str, int length) {
-        Toast.makeText(RegisterPage.this, toast_str, length).show();
-    }
-
     private void registerHandler() {
         String email = Objects.requireNonNull(emailEt.getText()).toString();
         String username = Objects.requireNonNull(usernameEt.getText()).toString();
@@ -77,23 +74,23 @@ public class RegisterPage extends AppCompatActivity {
         int res;
 
         if (email.isEmpty() || username.isEmpty() || password1.isEmpty() || password2.isEmpty()) {
-            makeToast("Please fill in all of the fields!", Toast.LENGTH_SHORT);
+            Toast.makeText(RegisterPage.this, "Please fill in all of the fields!", Toast.LENGTH_SHORT).show();
         } else if (!password1.equals(password2)) {
-            makeToast("Passwords do not match!", Toast.LENGTH_SHORT);
+            Toast.makeText(RegisterPage.this,"Passwords do not match!", Toast.LENGTH_SHORT).show();
             pwdEt.setText("");
             pwd2Et.setText("");
         } else if ((res = checkRegexes(email, username, password1)) > 0) {
             switch (res) {
                 case 1:
-                    makeToast("Invalid email address!", Toast.LENGTH_SHORT);
+                    Toast.makeText(RegisterPage.this,"Invalid email address!", Toast.LENGTH_SHORT).show();
                     emailEt.setText("");
                     break;
                 case 2:
-                    makeToast("Username should be between 5, 15 chars long.", Toast.LENGTH_SHORT);
+                    Toast.makeText(RegisterPage.this,"Username should be between 5, 15 chars long.", Toast.LENGTH_SHORT).show();
                     usernameEt.setText("");
                     break;
                 case 3:
-                    makeToast("Password should contain a number, a special char and at least 4 chars!", Toast.LENGTH_LONG);
+                    Toast.makeText(RegisterPage.this,"Password should contain a number, a special char and at least 4 chars!", Toast.LENGTH_LONG).show();
                     pwdEt.setText("");
                     pwd2Et.setText("");
                     break;
@@ -101,15 +98,14 @@ public class RegisterPage extends AppCompatActivity {
                     break;
             }
         } else {
+            registerBtn.setClickable(false);
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password1);
             user.setEmail(email);
-
             user.signUpInBackground(e -> {
                 if (e == null) {
-                    makeToast("Registration successful.", Toast.LENGTH_SHORT);
-                    makeToast("Created an account for user: " + email + "/" + username + ".", Toast.LENGTH_SHORT);
+                    Toast.makeText(RegisterPage.this,"Registration successful.", Toast.LENGTH_SHORT).show();
                     usernameEt.setText("");
                     emailEt.setText("");
                     pwdEt.setText("");
@@ -118,6 +114,7 @@ public class RegisterPage extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                registerBtn.setClickable(true);
             });
         }
     }
