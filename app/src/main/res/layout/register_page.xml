@@ -20,7 +20,7 @@
             android:layout_height="160dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:background="@drawable/logo"
-            android:textColor="@color/white"
+            android:textColor="@android:color/black"
             android:textSize="60sp"
             android:textStyle="bold" />
 
@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
                 android:text="@string/sign_up_str"
+                android:textColor="@android:color/black"
                 android:layout_gravity="center"/>
 
             <View
@@ -72,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:hint="@string/email_hint"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/darker_gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +92,8 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:hint="@string/username_hint"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@android:color/darker_gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +104,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pwd_et"
@@ -109,7 +113,8 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:hint="@string/pwd_hint"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/darker_gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +125,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pwd2_et"
@@ -128,7 +134,8 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:hint="@string/pwd2_hint"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/darker_gray" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +151,8 @@
                 android:text="@string/login_link"
                 android:textAlignment="center"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:textColor="@android:color/black" />
 
             <View
                 android:layout_width="wrap_content"
@@ -155,8 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/register_btn"
-                android:textSize="15sp"
-                app:cornerRadius="32dp"/>
+                android:textSize="15sp" />
 
             <View
                 android:layout_width="wrap_content"
