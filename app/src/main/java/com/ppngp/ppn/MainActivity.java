@@ -33,6 +33,8 @@ import java.util.Objects;
 import com.dev7.lib.v2ray.V2rayController;
 import com.dev7.lib.v2ray.utils.V2rayConstants;
 import com.google.android.material.navigation.NavigationBarView;
+import com.ppngp.ppn.R;
+import com.ppngp.ppn.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -116,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void setAdapterAndListeners() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.servers_array, R.layout.spinner_item);
+        // Get server names from the serverConfigMap
+        ArrayList<String> serverNames = new ArrayList<>(serverConfigMap.keySet());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, serverNames);
         adapter.setDropDownViewResource(R.layout.spinner_item);
         server_spinner.setAdapter(adapter);
 
