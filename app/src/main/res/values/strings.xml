@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">PPN</string>
+<!--    Back4App api keys-->
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">WRTGnB8xkOR92EmvpCnYMhlfdxxEhNb9JtnhA0xx</string>
+    <string name="back4app_client_key">SuOvmVsgyfI1IsxzTYlzHA1h1Xm6XdpOBM37L3KX</string>
+<!--    Login Page-->
+    <string name="welcome">Welcome</string>
+    <string name="login_str">Please login with your information</string>
+    <string name="email_usr">Email or username</string>
+    <string name="email_usr_hint">Email or username</string>
+    <string name="pwd">Password</string>
+    <string name="pwd_hint">Password</string>
+    <string name="remember">Remember me</string>
+    <string name="register_link"><u>Don\'t have an account?</u></string>
+    <string name="login_btn">Login</string>
+<!--    Register Page-->
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_str">Please sign up with your information</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="pwd2_hint">Re-password</string>
+    <string name="login_link"><u>Already have an account?</u></string>
+    <string name="register_btn">Register</string>
 </resources>

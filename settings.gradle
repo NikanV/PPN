@@ -19,6 +19,7 @@ dependencyResolutionManagement {
         flatDir {
             dirs "v2ray/libs"
         }
+        maven { url "https://www.jitpack.io" }
     }
 }
 
