@@ -4,6 +4,9 @@ import android.util.Log;
 
 import com.parse.ParseUser;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class UserHandler {
 
     public static void passwordReset(String email) {
@@ -26,5 +29,17 @@ public class UserHandler {
         } else {
             Log.d("Logout", "No user found.");
         }
+    }
+
+    private void updateExpireDate(Date date) {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser.put("expire_date", date);
+        currentUser.saveInBackground(e -> {
+            if (e == null) {
+                Log.d("Logout", "User logged out.");
+            } else {
+                Log.d("Logout", Objects.requireNonNull(e.getMessage()));
+            }
+        });
     }
 }
