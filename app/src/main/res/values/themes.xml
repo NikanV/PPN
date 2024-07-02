@@ -1,9 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.PPN" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.PPN" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="android:statusBarColor">@color/gray</item>
+        <item name="android:textColor">@color/white</item>
     </style>
-
-    <style name="Theme.PPN" parent="Base.Theme.PPN" />
 </resources>
