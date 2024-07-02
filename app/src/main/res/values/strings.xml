@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PPN</string>
+    <string name="device">Device</string>
+    <string name="settings">Settings</string>
+    <string name="import_config">Import Config</string>
+    <string name="about">About</string>
+    <string-array name="servers_array">
+        <item>Tehran</item>
+        <item>Mashhad</item>
+        <item>Shiraz</item>
+        <item>Isfahan</item>
+        <item>Karaj</item>
+        <item>Arak</item>
+    </string-array>
 </resources>
