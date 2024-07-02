@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".RegisterPage">
 
@@ -13,13 +13,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="28dp">
+        android:padding="0dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/app_name"
+            android:background="@drawable/logo"
             android:textColor="@color/white"
             android:textSize="60sp"
             android:textStyle="bold" />
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="50dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="15dp">
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="@string/sign_up"
-                android:textColor="@color/black"
+                android:textColor="@color/colorPrimary"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
