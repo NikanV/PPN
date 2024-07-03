@@ -21,7 +21,7 @@ public class UserHandler {
         return ParseUser.getCurrentUser();
     }
 
-    private void logoutUser() {
+    public static void logoutUser() {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             ParseUser.logOut();

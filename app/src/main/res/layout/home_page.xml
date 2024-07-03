@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Selected Server:"
+                    android:text="@string/selected_server"
                     android:textColor="@color/colorDarkGreen"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -55,14 +55,14 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:background="@drawable/iran"
-                    android:contentDescription="Icon of Iran"/>
+                    android:contentDescription="@string/icon_of_iran"/>
 
                 <TextView
                     android:id="@+id/server_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
-                    android:text="[Tehran]"
+                    android:text="@string/tehran"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGreen"
@@ -78,7 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ping:"
+                    android:text="@string/ping"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGreen"
@@ -90,7 +90,7 @@
                     android:id="@+id/server_delay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tap to test"
+                    android:text="@string/tap_to_test"
                     android:textSize="20sp"
                     android:textColor="@color/colorDarkGreen"
                     android:layout_alignParentEnd="true"
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Connection Time:"
+                    android:text="@string/connection_time"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGreen"
@@ -119,7 +119,7 @@
                     android:id="@+id/connection_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="00:00:00"
+                    android:text="@string/_00_00_00"
                     android:textSize="20sp"
                     android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -135,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Spent Traffic:"
+                    android:text="@string/spent_traffic"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGreen"
@@ -147,7 +147,7 @@
                     android:id="@+id/connection_traffic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 B | 0 B"
+                    android:text="@string/_0_b_0_b"
                     android:textSize="20sp"
                     android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -165,7 +165,7 @@
         android:layout_height="wrap_content"
         app:cornerRadius="20dp"
         android:textSize="16sp"
-        android:text="Connect"
+        android:text="@string/connect"
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="80dp"
         android:textColor="@android:color/white"
@@ -183,7 +183,7 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/nav_item_color_selector"
-        app:itemTextColor="@color/nav_item_color_selector"
+        app:itemTextColor="@color/white"
         android:background="@color/colorAccent"/>
 
 </RelativeLayout>

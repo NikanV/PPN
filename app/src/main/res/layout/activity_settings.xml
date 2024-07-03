@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Device ID"
+                    android:text="@string/device_id"
                     android:textColor="@color/colorDarkGreen"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="(Device ID will change on re-install"
+                    android:text="@string/device_id_will_change_on_re_install"
                     android:textColor="@color/lightColor"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="VPN"
+                    android:text="@string/vpn"
                     android:textColor="@color/colorDarkGreen"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Xray Version: 1.8.10"
+                    android:text="@string/xray_version_1_8_10"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="App Version: 1.0.0"
+                    android:text="@string/app_version_1_0_0"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -133,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="About"
+                    android:text="@string/about"
                     android:textColor="@color/colorDarkGreen"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Privacy Policy"
+                    android:text="@string/privacy_policy"
                     android:textColor="@color/colorHighlight"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Terms of Use"
+                    android:text="@string/terms_of_use"
                     android:textColor="@color/colorHighlight"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Email: admin@ppngp.dev"
+                    android:text="@string/email_admin_ppngp_dev"
                     android:textColor="@color/colorAccent"
                     android:textSize="20sp"
                     android:textStyle="" />
@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             app:cornerRadius="20dp"
             android:textSize="16sp"
-            android:text="Logout"
+            android:text="@string/logout"
             android:layout_marginHorizontal="60dp"
             android:textColor="@android:color/white"
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -192,6 +192,6 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/nav_item_color_selector"
-        app:itemTextColor="@color/nav_item_color_selector"
+        app:itemTextColor="@color/white"
         android:background="@color/colorAccent"/>
 </RelativeLayout>
