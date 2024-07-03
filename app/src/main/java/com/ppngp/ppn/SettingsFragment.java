@@ -2,7 +2,6 @@ package com.ppngp.ppn;
 
 import android.os.Bundle;
 import androidx.preference.PreferenceFragmentCompat;
-import com.ppngp.ppn.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override

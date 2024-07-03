@@ -45,7 +45,7 @@ public class LoginPage extends AppCompatActivity {
                             Toast.makeText(LoginPage.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             usernameEt.setText("");
                             pwdEt.setText("");
-                            tr(MainActivity.class);
+                            tr(HomePage.class);
                         } else {
                             Toast.makeText(LoginPage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }

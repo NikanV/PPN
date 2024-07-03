@@ -78,7 +78,7 @@ public class ImportConfigActivity extends AppCompatActivity {
 
         Map<Integer, Runnable> navigationActions = new HashMap<>();
         navigationActions.put(R.id.navigation_home, () -> {
-            Intent intent = new Intent(ImportConfigActivity.this, MainActivity.class);
+            Intent intent = new Intent(ImportConfigActivity.this, HomePage.class);
             startActivity(intent);
             finish();
         });
