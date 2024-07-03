@@ -24,17 +24,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         Map<Integer, Runnable> navigationActions = new HashMap<>();
         navigationActions.put(R.id.navigation_home, () -> {
-            Intent intent = new Intent(SettingsActivity.this, HomePage.class);
-            startActivity(intent);
-            finish();
+            tr(HomePage.class);
         });
         navigationActions.put(R.id.navigation_settings, () -> {
             // Already in Settings Activity, do nothing
         });
         navigationActions.put(R.id.navigation_import, () -> {
-            Intent intent = new Intent(SettingsActivity.this, ImportConfigActivity.class);
-            startActivity(intent);
-            finish();
+            tr(ImportConfigActivity.class);
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -46,7 +42,12 @@ public class SettingsActivity extends AppCompatActivity {
             return false;
         });
 
-        // Set the selected item to navigation_settings
         bottomNavigationView.setSelectedItemId(R.id.navigation_settings);
+    }
+
+    private void tr(Class c) {
+        Intent intent = new Intent(SettingsActivity.this, c);
+        startActivity(intent);
+        this.finish();
     }
 }

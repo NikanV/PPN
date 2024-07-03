@@ -1,10 +1,8 @@
 package com.ppngp.ppn;
 
 import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_CONNECTION_STATE_BROADCAST_EXTRA;
-import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_DOWNLOAD_SPEED_BROADCAST_EXTRA;
 import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_DOWNLOAD_TRAFFIC_BROADCAST_EXTRA;
 import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_DURATION_BROADCAST_EXTRA;
-import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_UPLOAD_SPEED_BROADCAST_EXTRA;
 import static com.dev7.lib.v2ray.utils.V2rayConstants.SERVICE_UPLOAD_TRAFFIC_BROADCAST_EXTRA;
 import static com.dev7.lib.v2ray.utils.V2rayConstants.V2RAY_SERVICE_STATICS_BROADCAST_INTENT;
 
@@ -16,10 +14,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,10 +33,10 @@ import com.google.android.material.navigation.NavigationBarView;
 public class HomePage extends AppCompatActivity {
 
     private Button connection;
-    private TextView connection_traffic, connection_time, server_delay;
+    private TextView serverName, connectionTraffic, connectionTime, serverDelay;
     private BroadcastReceiver v2rayBroadCastReceiver;
     private HashMap<String, String> serverConfigMap;
-    ArrayList<String> serverNames;
+    private ArrayList<String> serverNames;
 
     @SuppressLint({"SetTextI18n", "UnspecifiedRegisterReceiverFlag"})
     @Override
@@ -57,13 +52,14 @@ public class HomePage extends AppCompatActivity {
         serverNames = new ArrayList<>(serverConfigMap.keySet());
 
         setElements();
+        setServerName();
         setListeners();
         setNavBar();
 
         switch (V2rayController.getConnectionState()) {
             case CONNECTED:
                 connection.setText("Disconnect");
-                server_delay.callOnClick();
+                serverDelay.callOnClick();
                 break;
             case DISCONNECTED:
                 connection.setText("Connect");
@@ -79,15 +75,15 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 runOnUiThread(() -> {
-                    connection_time.setText(Objects.requireNonNull(intent.getExtras()).getString(SERVICE_DURATION_BROADCAST_EXTRA));
-                    connection_traffic.setText(intent.getExtras().getString(SERVICE_DOWNLOAD_TRAFFIC_BROADCAST_EXTRA) + " | " + intent.getExtras().getString(SERVICE_UPLOAD_TRAFFIC_BROADCAST_EXTRA));
+                    connectionTime.setText(Objects.requireNonNull(intent.getExtras()).getString(SERVICE_DURATION_BROADCAST_EXTRA));
+                    connectionTraffic.setText(intent.getExtras().getString(SERVICE_DOWNLOAD_TRAFFIC_BROADCAST_EXTRA) + " | " + intent.getExtras().getString(SERVICE_UPLOAD_TRAFFIC_BROADCAST_EXTRA));
                     switch ((V2rayConstants.CONNECTION_STATES) Objects.requireNonNull(intent.getExtras().getSerializable(SERVICE_CONNECTION_STATE_BROADCAST_EXTRA))) {
                         case CONNECTED:
                             connection.setText("Disconnect");
                             break;
                         case DISCONNECTED:
                             connection.setText("Connect");
-                            server_delay.setText("Ping: Tap to test");
+                            serverDelay.setText("Tap to test");
                             break;
                         case CONNECTING:
                             connection.setText("Connecting...");
@@ -107,20 +103,15 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void setElements() {
+        serverName = findViewById(R.id.server_name);
         connection = findViewById(R.id.btn_connection);
-        connection_time = findViewById(R.id.connection_duration);
-        connection_traffic = findViewById(R.id.connection_traffic);
-        server_delay = findViewById(R.id.server_delay);
+        connectionTime = findViewById(R.id.connection_duration);
+        connectionTraffic = findViewById(R.id.connection_traffic);
+        serverDelay = findViewById(R.id.server_delay);
     }
 
     @SuppressLint("SetTextI18n")
     private void setListeners() {
-        // Get server names from the serverConfigMap
-//        ArrayList<String> serverNames = new ArrayList<>(serverConfigMap.keySet());
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, serverNames);
-//        adapter.setDropDownViewResource(R.layout.spinner_item);
-//        server_spinner.setAdapter(adapter);
-
         connection.setOnClickListener(view -> {
             ArrayList<String> serverAndRemark = getSelectedServerAndRemark();
             if (V2rayController.getConnectionState() == V2rayConstants.CONNECTION_STATES.DISCONNECTED) {
@@ -130,15 +121,16 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        server_delay.setOnClickListener(view -> {
-            server_delay.setText("Ping: measuring...");
-            new Handler().postDelayed(() -> server_delay.setText("Ping: " + V2rayController.getV2rayServerDelay(getSelectedServerAndRemark().get(1)) + "ms"), 200);
+        serverDelay.setOnClickListener(view -> {
+            serverDelay.setText("measuring...");
+            String selectedServer = serverName.getText().toString().replace("[", "").replace("]", "");
+            new Handler().postDelayed(() -> serverDelay.setText(V2rayController.getV2rayServerDelay(serverConfigMap.get(selectedServer)) + "ms"), 200);
         });
     }
 
     private ArrayList<String> getSelectedServerAndRemark() {
         ArrayList<String> result = new ArrayList<>();
-        String selectedServer = getIntent().getStringExtra("selectedServer");
+        String selectedServer = getIntent().getStringExtra("ServerName");
         if (selectedServer == null) {
             selectedServer = getDefaultServer();
         }
@@ -156,12 +148,10 @@ public class HomePage extends AppCompatActivity {
             // Already in MainActivity, do nothing
         });
         navigationActions.put(R.id.navigation_settings, () -> {
-            Intent intent = new Intent(HomePage.this, SettingsActivity.class);
-            startActivity(intent);
+            tr(SettingsActivity.class);
         });
         navigationActions.put(R.id.navigation_import, () -> {
-            Intent intent = new Intent(HomePage.this, ImportConfigActivity.class);
-            startActivity(intent);
+            tr(ImportConfigActivity.class);
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -176,8 +166,12 @@ public class HomePage extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
 
-    private String getDefaultServer() {
+    @SuppressLint("SetTextI18n")
+    private void setServerName() {
+        serverName.setText("[" + getSelectedServerAndRemark().get(0) + "]");
+    }
 
+    private String getDefaultServer() {
         return serverNames.get(0);
     }
 
@@ -194,5 +188,11 @@ public class HomePage extends AppCompatActivity {
         super.onResume();
         serverConfigMap = Utils.readJsonFromAssets(this, "v2ray_configs.json");
         serverNames = new ArrayList<>(serverConfigMap.keySet());
+        setServerName();
+    }
+
+    private void tr(Class c) {
+        Intent intent = new Intent(HomePage.this, c);
+        startActivity(intent);
     }
 }

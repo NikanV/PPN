@@ -1,49 +1,162 @@
 <!-- res/layout/activity_import_config.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/backgroundColor">
 
-    <EditText
-        android:id="@+id/editTextServerName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Server Name" />
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <EditText
-        android:id="@+id/editTextServerUrl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Server URL" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose your Server"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_gravity="center_horizontal"/>
 
-    <Button
-        android:id="@+id/buttonAddServer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Server" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/home_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="15dp"
+            android:layout_gravity="center_vertical">
 
-    <Button
-        android:id="@+id/buttonRemoveServer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remove Server" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/listViewServers"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:choiceMode="multipleChoice" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="28dp"
+                    android:paddingVertical="20dp"
+                    android:id="@+id/button_layout">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Tehran"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Mashhad"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Shiraz"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Isfahan"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Karaj"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/iran"
+                        app:iconTint="@null"
+                        app:iconSize="30dp"
+                        app:cornerRadius="20dp"
+                        android:textSize="20sp"
+                        android:text="Arak"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textColor="@android:color/white"
+                        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:elevation="4dp"
+                        android:textAlignment="center"/>
+
+                </LinearLayout>
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/nav_item_color_selector"
         app:itemTextColor="@color/nav_item_color_selector"
-        android:background="@color/colorPrimary"/>
-</LinearLayout>
+        android:background="@color/backgroundColor"/>
+</RelativeLayout>
