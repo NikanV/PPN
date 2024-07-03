@@ -1,19 +1,29 @@
 package com.ppngp.ppn;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    TextView deviceId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        deviceId = findViewById(R.id.device_id);
+        setUUID();
 
         setNavBar();
     }
@@ -43,6 +53,13 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         bottomNavigationView.setSelectedItemId(R.id.navigation_settings);
+    }
+
+    @SuppressLint("HardwareIds")
+    private void setUUID() {
+        String androidId = Settings.Secure.getString(SettingsActivity.this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        String uuid = UUID.nameUUIDFromBytes(androidId.getBytes()).toString();
+        deviceId.setText(uuid);
     }
 
     private void tr(Class c) {

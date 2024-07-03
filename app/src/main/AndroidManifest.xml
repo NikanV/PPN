@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".Application"
         android:allowBackup="true"
@@ -36,6 +38,11 @@
 
         <activity
             android:name="com.ppngp.ppn.LoginPage"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name="com.ppngp.ppn.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

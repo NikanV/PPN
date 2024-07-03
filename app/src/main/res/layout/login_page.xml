@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="@string/welcome"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorDarkGreen"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
                 android:text="@string/login_str"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/colorSecondary" />
 
             <View
                 android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email_usr"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/colorSecondary" />
 
             <View
                 android:layout_width="wrap_content"
@@ -84,7 +84,8 @@
                     android:alpha="0.7"
                     android:hint="@string/email_usr_hint"
                     android:inputType="text"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/colorSecondary"
+                    android:textColorHighlight="@color/colorSecondary"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pwd"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/colorSecondary" />
 
             <View
                 android:layout_width="wrap_content"
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 app:hintEnabled="false"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@android:color/black">
+                app:passwordToggleTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pwd_et"
@@ -116,7 +117,8 @@
                     android:alpha="0.7"
                     android:hint="@string/pwd_hint"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/colorSecondary"
+                    android:textColorHighlight="@color/colorSecondary"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +134,7 @@
                     android:layout_weight="1"
                     android:alpha="0.7"
                     android:text="@string/remember"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorSecondary" />
 
                 <TextView
                     android:id="@+id/register_link"
@@ -144,7 +146,7 @@
                     android:textAlignment="textEnd"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/colorSecondary" />
 
             </LinearLayout>
 
@@ -157,7 +159,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/login_btn"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:backgroundTint="@color/colorDarkGreen"/>
 
             <View
                 android:layout_width="wrap_content"

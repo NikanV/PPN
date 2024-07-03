@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.PPN" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorOnPrimary">@color/white</item>
 
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/colorDarkGreen</item>
     </style>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main_layout"
     tools:context=".HomePage"
-    android:background="@color/backgroundColor">
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/app_logo"
@@ -46,7 +46,7 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Selected Server:"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     />
@@ -65,7 +65,7 @@
                     android:text="[Tehran]"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:gravity="center_horizontal"/>
 
@@ -81,7 +81,7 @@
                     android:text="Ping:"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:layout_alignParentStart="true"
                     android:gravity="center_horizontal"/>
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tap to test"
                     android:textSize="20sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="sans-serif-condensed-medium"
 
@@ -110,7 +110,7 @@
                     android:text="Connection Time:"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:layout_alignParentStart="true"
                     android:gravity="center_horizontal"/>
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:text="00:00:00"
                     android:textSize="20sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:layout_alignParentEnd="true"
                     android:gravity="center_horizontal"/>
@@ -138,7 +138,7 @@
                     android:text="Spent Traffic:"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:layout_alignParentStart="true"
                     android:gravity="center_horizontal"/>
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:text="0 B | 0 B"
                     android:textSize="20sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDarkGreen"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:layout_alignParentEnd="true"
                     android:gravity="center_horizontal"/>
@@ -173,6 +173,7 @@
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:fontFamily="sans-serif-condensed-medium"
         android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorDarkGreen"
         android:elevation="4dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -183,6 +184,6 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/nav_item_color_selector"
         app:itemTextColor="@color/nav_item_color_selector"
-        android:background="@color/backgroundColor"/>
+        android:background="@color/colorAccent"/>
 
 </RelativeLayout>
