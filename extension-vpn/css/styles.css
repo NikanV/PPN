@@ -1,0 +1,132 @@
+@font-face {
+  font-family: 'AncillaryRegular';
+  src: url('../fonts/ancillary-regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AncillaryBold';
+  src: url('../fonts/ancillary-bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'AncillaryRegular', 'Arial', sans-serif;
+  text-align: center;
+  padding: 40px;
+  min-width: 250px;
+  min-height: 400px;
+  background: linear-gradient(135deg, #5496FD, #1E5CF7);
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header {
+  margin-bottom: 0px;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0px;
+  pointer-events: none;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-color: #ddd;
+  box-shadow: 0 0 5px 0px #888;
+  position: relative;
+  transition: box-shadow 0.2s ease;
+
+  display: grid;
+  place-items: center;
+}
+
+.button::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 10px solid #888;
+  position: absolute;
+ }
+
+ .button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 15px 5px rgba(34, 95, 254, 0.7);
+}
+
+.bar {
+  height: 30%;
+  width: 10px;
+  background: #888;
+  border-radius: 10px;
+  position: absolute; 
+  top: 20px;
+  box-shadow: 0 0 0 10px #ddd;
+}
+
+.button:active .bar {
+  background: #225FFE;
+}
+
+.button:active::before {
+  border-color: #326EFF;
+}
+
+.vpn-status {
+  font-family: 'AncillaryRegular', 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FAFBFF;
+  margin-top: 20px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.location-container,
+.ip-container {
+  display: flex;
+  align-items: center;
+  background-color: #2c6de8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.location-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.location-name,
+.ip-name {
+  font-family: 'AncillaryRegular', 'Arial', sans-serif;
+  font-size: 16px;
+  color: #FAFBFF;
+  text-align: center;
+}
