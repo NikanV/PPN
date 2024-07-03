@@ -33,8 +33,6 @@ import java.util.Objects;
 import com.dev7.lib.v2ray.V2rayController;
 import com.dev7.lib.v2ray.utils.V2rayConstants;
 import com.google.android.material.navigation.NavigationBarView;
-import com.ppngp.ppn.R;
-import com.ppngp.ppn.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -153,13 +151,17 @@ public class MainActivity extends AppCompatActivity {
 
         Map<Integer, Runnable> navigationActions = new HashMap<>();
         navigationActions.put(R.id.navigation_home, () -> {
-            // TODO Handle Home action
+            // Already in MainActivity, do nothing
         });
         navigationActions.put(R.id.navigation_settings, () -> {
-            // TODO Handle Settings action
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
         });
         navigationActions.put(R.id.navigation_import, () -> {
-            // TODO Handle Import Config action
+            Intent intent = new Intent(MainActivity.this, ImportConfigActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -170,7 +172,11 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        // Set the selected item to navigation_home
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
+
 
     @Override
     protected void onDestroy() {
@@ -178,5 +184,14 @@ public class MainActivity extends AppCompatActivity {
         if (v2rayBroadCastReceiver != null) {
             unregisterReceiver(v2rayBroadCastReceiver);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        serverConfigMap = Utils.readJsonFromAssets(this, "v2ray_configs.json");
+        setElements();
+        setAdapterAndListeners();
+        setNavBar();
     }
 }

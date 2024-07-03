@@ -1,0 +1,49 @@
+<!-- res/layout/activity_import_config.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextServerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Server Name" />
+
+    <EditText
+        android:id="@+id/editTextServerUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Server URL" />
+
+    <Button
+        android:id="@+id/buttonAddServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Server" />
+
+    <Button
+        android:id="@+id/buttonRemoveServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remove Server" />
+
+    <ListView
+        android:id="@+id/listViewServers"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:choiceMode="multipleChoice" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color_selector"
+        app:itemTextColor="@color/nav_item_color_selector"
+        android:background="@color/colorPrimary"/>
+</LinearLayout>
